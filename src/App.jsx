@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import WordOfDay from "./components/WordOfDay/WordOfDay";
+import DefineWord from "./components/DefineWord/DefineWord";
 import Search from "./components/Search/Search.jsx";
+import Nav from "./components/Header/Header";
 import "./App.css";
 
 export default function App() {
   const apiKey = import.meta.env.VITE_MW_EN;
 
-  const [wordOfDayEN, setWordOfDayEN] = useState(null);
+  const [wordData, setWordData] = useState(null);
   // const [wordOfDayES, setWordOfDayES] = useState(null);
 
   //Function to getWord
@@ -19,7 +20,7 @@ export default function App() {
       // Parse JSON response into a javascript object
       const data = await response.json();
       //set the Movie state to the movie
-      setWordOfDayEN(data);
+      setWordData(data);
     } catch (err) {
       console.error(err);
     }
@@ -32,7 +33,7 @@ export default function App() {
   return (
     <div className="app">
       <Search searchTerm={getWord} />
-      <WordOfDay word={wordOfDayEN} />
+      <DefineWord wordInfo={wordData} />
     </div>
   );
 }

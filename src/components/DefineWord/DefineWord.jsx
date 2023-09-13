@@ -1,8 +1,7 @@
-import Image from "../Image/Image";
-import "./WordOfDay.css";
+import "./DefineWord.css";
 
-export default function WordOfDay({ word }) {
-  console.log(word);
+export default function DefineWord({ wordInfo }) {
+  console.log(wordInfo);
   
   function createUL(definition) {
     let defArr = definition.split("{bc}");
@@ -11,7 +10,7 @@ export default function WordOfDay({ word }) {
   }
 
   const definitions = [];
-  for(let property in word) {
+  for(let property in wordInfo) {
     definitions.push(property);
   }
 
@@ -20,18 +19,17 @@ export default function WordOfDay({ word }) {
 
   const loaded = () => {
     return (
-      <div className="WordOfDay">
-        <h1>{word[0].meta.id.toUpperCase()}</h1>
+      <div className="DefineWord">
+        <h1>{wordInfo[0].meta.id.toUpperCase()}</h1>
         {definitions.map((definition, index) => {
           return (
             <div key={index}>
               {console.log(definition)}
-              <h2>{word[index].fl}</h2>
-              <p>{word[index].def[0].sseq[0][0][1].dt[0][1]}</p>
+              <h2>{wordInfo[index].fl}</h2>
+              <p>{wordInfo[index].def[0].sseq[0][0][1].dt[0][1]}</p>
             </div>
           );
         })}
-        <Image />
         {createUL(
           "{bc}marked by lack of proper caution {bc}careless of consequences"
         )}
@@ -47,5 +45,5 @@ export default function WordOfDay({ word }) {
     );
   };
 
-  return word ? loaded() : loading();
+  return wordInfo ? loaded() : loading();
 }
