@@ -60,9 +60,7 @@ export default function App() {
   //   console.log(data);
   // };
 
-  //This will run on the first render but not on subsquent renders
   useEffect(() => {
-    // need to change this from clueless
     getWord("reckless");
   }, []);
 
