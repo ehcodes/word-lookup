@@ -4,7 +4,7 @@ export default function Image() {
 
   return (
     <div className="Image">
-      <img src="" alt="" />
+      <img src="" alt="blank" />
     </div>
   )
 }
