@@ -23,8 +23,9 @@ export default function Search({ searchTerm }) {
   return (
     <>
       <form className="search" onSubmit={handleSubmit}>
-        <input className="searchBar"
-          placeholder="  search"
+        <input
+          className="searchBar"
+          placeholder="search"
           type="text"
           name="term"
           onChange={handleChange}
