@@ -1,8 +1,6 @@
 import "./DefineWord.css";
 
 export default function DefineWord({ wordInfo }) {
-  console.log(wordInfo);
-
   // some words have multiple definitions for the type of speech i.e. adjective, noun, verb
   // this function takes the string provided by the API and splits those definitions.
   function splitDefinition(unsplitDef) {
@@ -65,10 +63,8 @@ export default function DefineWord({ wordInfo }) {
     // stripped definition array that will be returned at the end of this function
     let tokenlessDefArr = [];
 
-    console.log(tokenlessDefArr);
     defArr.forEach((def) => {
       let tokenlessDef;
-      console.log(def);
       for (let apiToken of apiTokens) {
         tokenlessDef ? def = tokenlessDef : null
         if (def.includes(apiToken)) {
@@ -79,7 +75,6 @@ export default function DefineWord({ wordInfo }) {
       // then remove lingering brackets
       tokenlessDefArr.length > 0 ? null : tokenlessDefArr.push(def);
     });
-    console.log(tokenlessDefArr);
     return tokenlessDefArr;
   }
 
@@ -103,7 +98,6 @@ export default function DefineWord({ wordInfo }) {
             {wordInfo.map((definition, index) => {
               return (
                 <section className="definition" key={index}>
-                  {console.log(definition)}
                   <h2>{wordInfo[index].fl}</h2>
                   <p>
                     {checkForAPITokens(
