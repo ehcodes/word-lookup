@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DefineWord from "./components/DefineWord/DefineWord";
 import Search from "./components/Search/Search.jsx";
-import Nav from "./components/Header/Header";
+import Header from "./components/Header/Header";
 import "./App.css";
 
 export default function App() {
@@ -31,7 +31,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="app">
+    <div className="App">
+      <Header/>
       <Search searchTerm={getWord} />
       <DefineWord wordInfo={wordData} />
     </div>

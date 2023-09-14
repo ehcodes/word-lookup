@@ -1,8 +1,8 @@
-.Nav{
-  font-weight: normal;
+.header h1{
+  margin:0;
+  padding: .5rem;
 }
-.Nav nav{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+.header{
+  background-color:black;
+  color: white;
 }

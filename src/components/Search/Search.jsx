@@ -21,16 +21,18 @@ export default function Search({ searchTerm }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="term"
-          onChange={handleChange}
-          value={search.term}
-        />
-        <input type="submit" value="submit" />
-      </form>
-    </div>
+    <>
+      <section className="search">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="term"
+            onChange={handleChange}
+            value={search.term}
+          />
+          <input type="submit" value="submit" />
+        </form>
+      </section>
+    </>
   );
 }

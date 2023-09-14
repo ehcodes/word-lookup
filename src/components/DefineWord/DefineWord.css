@@ -1,3 +1,16 @@
-.DefineWord{
-  font-weight: normal;
+.DefineWord {
+  width:90vw;
+  margin:0 auto;
+}
+.definedWord{
+  text-align: center;
+}
+
+.variants {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.variant {
+  font-style: italic;
 }
