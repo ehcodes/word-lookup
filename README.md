@@ -9,6 +9,13 @@ This app may be used to lookup the definitions of a word.
 ### How it was Made
 This project was built using HTML, CSS, Javascript, React + Vite, and the Merriam Webster Collegiate API. This app has 3 components within the app.jsx component, Header, Search, and DefineWord.
 
+
+### To run locally
+1. git clone git@github.com:ehcodes/word-lookup.git
+2. cd into the word-lookup
+3. npm install
+4. npm run dev
+
 ### Helpful Resources
 * https://coolors.co/77966d-eaeaea-e1dade-9d6a89-aec5eb
 * https://dictionaryapi.com/products/api-collegiate-dictionary
