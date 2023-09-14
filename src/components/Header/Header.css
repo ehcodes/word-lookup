@@ -1,8 +1,10 @@
 .header h1{
   margin:0;
-  padding: .5rem;
+  padding: 2.5rem 1.5rem 1rem;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: 300;
 }
 .header{
-  background-color:black;
+  background-color:rgb(119, 150, 109);
   color: white;
 }

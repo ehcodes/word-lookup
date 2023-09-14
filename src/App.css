@@ -1,4 +1,8 @@
 .App{
   display: flex;
   flex-direction: column;
+  background-color: rgb(234, 234, 234);
+  min-height:100vh;
+  line-height: 1.5rem;
+  font: 16px 'Work Sans', sans-serif;
 }
