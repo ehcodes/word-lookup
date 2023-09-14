@@ -1,8 +1,16 @@
-# React + Vite
+# Word Lookup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![start screen image](/src/assets/readmeImgs/wl_home.png)
 
-Currently, two official plugins are available:
+[View Live Project](https://engridhernandez.com/word-lookup/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This app may be used to lookup the definitions of a word.
+
+### How it was Made
+This project was built using HTML, CSS, Javascript, React + Vite, and the Merriam Webster Collegiate API. This app has 3 components within the app.jsx component, Header, Search, and DefineWord.
+
+### Helpful Resources
+* https://coolors.co/77966d-eaeaea-e1dade-9d6a89-aec5eb
+* https://dictionaryapi.com/products/api-collegiate-dictionary
+* https://dictionaryapi.com/products/json
+* https://blog.devgenius.io/how-to-deploy-your-vite-react-app-to-github-pages-with-and-without-react-router-b060d912b10e
