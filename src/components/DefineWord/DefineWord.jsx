@@ -5,8 +5,8 @@ export default function DefineWord({ wordInfo }) {
 
   // some words have multiple definitions for the type of speech i.e. adjective, noun, verb
   // this function takes the string provided by the API and splits those definitions.
-  function splitDefinition(definition) {
-    let defArr = definition.split(`{bc}`);
+  function splitDefinition(unsplitDef) {
+    let defArr = unsplitDef.split(`{bc}`);
     defArr.shift();
     return defArr;
   }
@@ -23,6 +23,7 @@ export default function DefineWord({ wordInfo }) {
       "\\/inf}",
       "{it}",
       "\\/it}",
+      "/it}",
       "{ldquo}",
       "{p_br}",
       "{rdquo}",
@@ -48,77 +49,75 @@ export default function DefineWord({ wordInfo }) {
       "\\/dx_ety}",
       "\\/ma}",
       "{a_link|",
-      "{d_link||",
-      "{dxt|||",
-      "{et_link||",
-      "{i_link||",
+      "{d_link|",
+      "{dxt|",
+      "{et_link|",
+      "{i_link|",
       "{mat||",
-      "{sx|||",
+      "{sx|",
       "{ds}",
+      "{",
+      "}",
+      "|",
+      "||",
     ];
 
     // stripped definition array that will be returned at the end of this function
     let tokenlessDefArr = [];
-    
+
     console.log(tokenlessDefArr);
     defArr.forEach((def) => {
-      let bracelessDef;
+      let tokenlessDef;
       console.log(def);
       for (let apiToken of apiTokens) {
+        tokenlessDef ? def = tokenlessDef : null
         if (def.includes(apiToken)) {
           // remove token from definition
-          bracelessDef = def.replaceAll(apiToken, "");
-          def = bracelessDef.replace(/[{}]/g, "");
-          tokenlessDefArr.push(def);
+          tokenlessDef = def.replaceAll(apiToken, "");
         }
       }
-      bracelessDef = def.replace(/[{}]/g, "");
       // then remove lingering brackets
-      tokenlessDefArr.length>0 ? null : tokenlessDefArr.push(def);
+      tokenlessDefArr.length > 0 ? null : tokenlessDefArr.push(def);
     });
     console.log(tokenlessDefArr);
     return tokenlessDefArr;
   }
 
-  const definitions = [];
-  for (let property in wordInfo) {
-    definitions.push(property);
-  }
-
-  console.log(definitions);
-  // console.log(Array.isArray(definitions));
-
   const loaded = () => {
     return (
-      <div className="DefineWord">
-        <h1 className="definedWord">{wordInfo[0].meta.id.toUpperCase()}</h1>
-        <section className="variants">
-          {/* loops through the different variants of the word */}
-          {wordInfo[0].meta.stems.map((variant, index) => {
-            return (
-              <p className="variant" key={variant}>
-                {wordInfo[0].meta.stems[index]}
-              </p>
-            );
-          })}
+      <>
+        <section className="DefineWord">
+          <h1 className="definedWord">{wordInfo[0].meta.id.toUpperCase()}</h1>
+          <section className="variants">
+            {/* loops through the different variants of the word */}
+            {wordInfo[0].meta.stems.map((variant, index) => {
+              return (
+                <p className="variant" key={variant}>
+                  {wordInfo[0].meta.stems[index]}
+                </p>
+              );
+            })}
+          </section>
+          {/* loops through the different definitions provided for the word */}
+          <section className="definitions">
+            {wordInfo.map((definition, index) => {
+              return (
+                <section className="definition" key={index}>
+                  {console.log(definition)}
+                  <h2>{wordInfo[index].fl}</h2>
+                  <p>
+                    {checkForAPITokens(
+                      splitDefinition(
+                        wordInfo[index].def[0].sseq[0][0][1].dt[0][1]
+                      )
+                    )}
+                  </p>
+                </section>
+              );
+            })}
+          </section>
         </section>
-        {/* loops through the different definitions provided for the word */}
-        {wordInfo.map((definition, index) => {
-          return (
-            <div key={index}>
-              {console.log(definition)}
-              <h2>{wordInfo[index].fl}</h2>
-              <p>
-                {checkForAPITokens(splitDefinition(
-                  wordInfo[index].def[0].sseq[0][0][1].dt[0][1]
-                ))}
-                {/* {wordInfo[index].def[0].sseq[0][0][1].dt[0][1]} */}
-              </p>
-            </div>
-          );
-        })}
-
-      </div>
+      </>
     );
   };
 
