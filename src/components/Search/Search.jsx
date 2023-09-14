@@ -25,13 +25,13 @@ export default function Search({ searchTerm }) {
       <form className="search" onSubmit={handleSubmit}>
         <input
           className="searchBar"
-          placeholder="search"
+          placeholder="Search"
           type="text"
           name="term"
           onChange={handleChange}
           value={search.term}
         />
-        <input className="searchBtn" type="submit" value="submit" />
+        <input className="searchBtn" type="submit" value="Submit" />
       </form>
     </>
   );
